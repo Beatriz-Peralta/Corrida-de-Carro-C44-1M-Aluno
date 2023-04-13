@@ -218,7 +218,20 @@ handlePlayerControls() {
     player.positionY += 10;
     player.update();
   }
-
+  this.handPlayerControls();
+  const finishLine = height * 6 - 100;
+  
+  if (player.positionY > finishLine) {
+  gameState = 2;
+  player.rank += 1;
+  Player.updateCarsAtEnd(player.rank);
+  player.update();
+  this.showRank();
+  }
+  
+  drawSprites();
+   }
+  }
   if (keyIsDown(LEFT_ARROW) && player.positionX > width / 3 - 50) {
     player.positionX -= 5;
     player.update();
